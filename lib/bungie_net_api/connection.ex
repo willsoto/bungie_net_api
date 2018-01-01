@@ -39,10 +39,15 @@ defmodule BungieNetAPI.Connection do
 
   Tesla.Env.client
   """
-  @spec new(String.t) :: Tesla.Env.client
-  def new(token) when is_binary(token) do
+  @spec new(String.t, String.t) :: Tesla.Env.client
+  def new(token, api_key) when is_binary(token) and is_binary(api_key) do
     Tesla.build_client([
-      {Tesla.Middleware.Headers,  %{"Authorization" => "Bearer #{token}"}}
+      {
+        Tesla.Middleware.Headers,  %{
+          "Authorization" => "Bearer #{token}",
+          "X-API-Key" => api_key
+        }
+      }
     ])
   end
 

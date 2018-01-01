@@ -18,3 +18,13 @@ end
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/bungie_net_api](https://hexdocs.pm/bungie_net_api).
+
+## Usage
+
+#### Create a client
+
+```elixir
+client = BungieNetAPI.Connection.new(token, api_key)
+
+response = BungieNetAPI.Api.User.user_search_users(client, [:q: "some_query"])
+```
