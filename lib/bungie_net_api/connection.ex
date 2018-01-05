@@ -12,6 +12,7 @@ defmodule BungieNetAPI.Connection do
   # Add any middleware here (authentication)
   plug Tesla.Middleware.BaseUrl, "https://www.bungie.net/Platform"
   plug Tesla.Middleware.Headers, %{"User-Agent" => "Elixir"}
+  plug Tesla.Middleware.FollowRedirects
   plug Tesla.Middleware.EncodeJson
 
   @scopes [
